@@ -1,0 +1,89 @@
+﻿@model AddTranViewModel
+
+@{
+    ViewData["Tittle"] = "Input Transaksi Baru";
+}
+<h1>Input Transaksi Baru</h1>
+
+<div class="mt-3"></div>
+
+@if (@ViewData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error !</strong> @ViewData["ErrorMessage"]
+    </div>
+
+}
+
+<form method="post" action="AddTran">
+    <div class="row card">
+        <div class="col-md-12 card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="NoAgreement" class="control-label fw-bold"></label>
+                        <input asp-for="NoAgreement" class="form-control" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="BranchId" class="control-label fw-bold">Branch Id</label>
+                        <input asp-for="BranchId" class="form-control" type="number" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="NoBPKB" class="control-label fw-bold"></label>
+                        <input asp-for="NoBPKB" class="form-control" type="text" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="DateInput" class="control-label fw-bold"></label>
+                        <input asp-for="DateInput" class="form-control" type="date" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="DateBPKB" class="control-label fw-bold"></label>
+                        <input asp-for="DateBPKB" class="form-control" type="date" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="NoFaktur" class="control-label fw-bold"></label>
+                        <input asp-for="NoFaktur" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DateFaktur" class="control-label fw-bold"></label>
+                        <input asp-for="DateFaktur" class="form-control" type="date" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="NoPolis" class="control-label fw-bold"></label>
+                        <input asp-for="NoPolis" class="form-control" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="LocationId" class="control-label fw-bold"></label>
+                        <select asp-for="LocationId" class="form-control form-select" asp-items="(SelectList)@ViewData["locations"]">
+                            <option>Select Lokasi Penyimpanan</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-12 mt-3">
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-warning" asp-action="CancelProses" >Cancel</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" asp-action="AddTran">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
